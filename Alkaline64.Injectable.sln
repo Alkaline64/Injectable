@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1900826F-515B-4BD4-A951-C9C61933EF3B}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alkaline64.Injectable", "src\Alkaline64.Injectable\Alkaline64.Injectable.csproj", "{8BDD282A-3CD5-40ED-8D16-965D0A3E5712}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D885D8FD-202A-40AA-9D48-2BAAF66CD71A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alkaline64.Injectable.Tests", "test\Alkaline64.Injectable.Tests\Alkaline64.Injectable.Tests.csproj", "{7F98A3D2-D3AB-4672-9EAF-4DDA1057B0B5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alkaline64.Injectable.Tests.Accessibility", "test\Alkaline64.Injectable.Testables\Alkaline64.Injectable.Tests.Accessibility.csproj", "{14CE8B35-FE14-48F2-9298-77DFF784A391}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cases", "Cases", "{10B69C4B-28E0-4D5F-AEFC-868388B528AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alkaline64.Injectable.Tests.Lifetimes", "Alkaline64.Injectable.Tests.Lifetimes\Alkaline64.Injectable.Tests.Lifetimes.csproj", "{C0507772-B332-4998-B199-A2295683E940}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BDD282A-3CD5-40ED-8D16-965D0A3E5712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BDD282A-3CD5-40ED-8D16-965D0A3E5712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BDD282A-3CD5-40ED-8D16-965D0A3E5712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BDD282A-3CD5-40ED-8D16-965D0A3E5712}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F98A3D2-D3AB-4672-9EAF-4DDA1057B0B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F98A3D2-D3AB-4672-9EAF-4DDA1057B0B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F98A3D2-D3AB-4672-9EAF-4DDA1057B0B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F98A3D2-D3AB-4672-9EAF-4DDA1057B0B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14CE8B35-FE14-48F2-9298-77DFF784A391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14CE8B35-FE14-48F2-9298-77DFF784A391}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14CE8B35-FE14-48F2-9298-77DFF784A391}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14CE8B35-FE14-48F2-9298-77DFF784A391}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0507772-B332-4998-B199-A2295683E940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0507772-B332-4998-B199-A2295683E940}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0507772-B332-4998-B199-A2295683E940}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0507772-B332-4998-B199-A2295683E940}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7F98A3D2-D3AB-4672-9EAF-4DDA1057B0B5} = {D885D8FD-202A-40AA-9D48-2BAAF66CD71A}
+		{14CE8B35-FE14-48F2-9298-77DFF784A391} = {10B69C4B-28E0-4D5F-AEFC-868388B528AA}
+		{10B69C4B-28E0-4D5F-AEFC-868388B528AA} = {D885D8FD-202A-40AA-9D48-2BAAF66CD71A}
+		{C0507772-B332-4998-B199-A2295683E940} = {10B69C4B-28E0-4D5F-AEFC-868388B528AA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {50332276-3700-434F-B2B8-2ED5A75F13AE}
+	EndGlobalSection
+EndGlobal
