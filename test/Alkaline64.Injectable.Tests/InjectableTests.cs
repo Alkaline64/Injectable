@@ -21,4 +21,20 @@ public class InjectableTests
         Assert.NotNull(service);
         Assert.Equal("InternalImplementation", service.ImplementationType!.Name);
     }
+
+    [Fact]
+    public void InjectableWithNotImplementedServiceType_ThrowsException()
+    {
+        // Arrange
+        var services = new ServiceCollection();
+
+        // Act
+        services.RegisterInjectables<AccessabilityTestsMarker>();
+
+        // Assert
+        var service = services.FirstOrDefault(s => s.ServiceType == typeof(IPublicInterface));
+
+        Assert.NotNull(service);
+        Assert.Equal("InternalImplementation", service.ImplementationType!.Name);
+    }
 }

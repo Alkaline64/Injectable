@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using System.Reflection;
 
 namespace Alkaline64.Injectable;
 
@@ -14,38 +13,53 @@ public static class ServiceCollectionExtensions
     /// <returns>The service collection.</returns>
     public static IServiceCollection RegisterInjectables<TMarker>(this IServiceCollection services)
     {
-        foreach (var type in typeof(TMarker).Assembly.GetTypes())
-            RegisterInjectables(services, type);
+        services.RegisterInjectables(AssemblyUtils.FindInjectables<TMarker>());
 
         return services;
     }
 
-    private static void RegisterInjectables(IServiceCollection services, Type type)
+    /// <summary>
+    /// Registers all Injectables in the marker assembly to the service collection.
+    /// </summary>
+    /// <param name="services">The service collection.</param>
+    /// <param name="context">The injection context.</param>
+    /// <returns>The service collection.</returns>
+    public static IServiceCollection RegisterInjectables(this IServiceCollection services, InjectionContext context)
     {
-        foreach (var injectable in type.GetCustomAttributes<InjectableAttribute>(true))
-            RegisterInjectable(services, type, injectable);
+        services.RegisterInjectables(context.Injectables);
+
+        return services;
     }
 
-    private static void RegisterInjectable(IServiceCollection services, Type type, InjectableAttribute injectable)
+    private static void RegisterInjectables(this IServiceCollection services, IEnumerable<InjectableAttribute> injectables)
     {
-        var serviceType = GetServiceType(type, injectable);
-        var descriptor = GetServiceDescriptor(type, injectable, serviceType);
+        foreach (var injectable in injectables.OrderBy(x => x.ServiceType).ThenBy(x => x.Priority))
+            services.RegisterInjectable(injectable);
+    }
 
-        if (injectable.UseTry)
+    private static void RegisterInjectable(this IServiceCollection services, InjectableAttribute injectable)
+    {
+        var descriptor = injectable.GetServiceDescriptor();
+
+        if (injectable.AsTry)
             services.TryAdd(descriptor);
         else
             services.Add(descriptor);
     }
 
-    private static Type GetServiceType(Type type, InjectableAttribute injectable) =>
-        injectable.ServiceType is not null
-            ? injectable.ServiceType
-            : type;
+    private static ServiceDescriptor GetServiceDescriptor(this InjectableAttribute injectable)
+    {
+        if (injectable.ImplementationType is null)
+            throw new InvalidOperationException($"{nameof(injectable.ImplementationType)} has not been declared.");
 
-    private static ServiceDescriptor GetServiceDescriptor(Type type, InjectableAttribute injectable, Type serviceType) =>
-        injectable.Key is not null
-            ? new ServiceDescriptor(serviceType, injectable.Key, type, injectable.Lifetime.AsServiceLifetime())
-            : new ServiceDescriptor(serviceType, type, injectable.Lifetime.AsServiceLifetime());
+        var serviceType = injectable.ServiceType ?? injectable.ImplementationType;
+        if (serviceType.IsAssignableFrom(injectable.ImplementationType))
+            throw new InvalidOperationException($"{serviceType.FullName} is not assignable from {injectable.ImplementationType.FullName}.");
+
+        return injectable.Key is not null
+            ? new ServiceDescriptor(serviceType, injectable.Key, injectable.ImplementationType, injectable.Lifetime.AsServiceLifetime())
+            : new ServiceDescriptor(serviceType, injectable.ImplementationType, injectable.Lifetime.AsServiceLifetime());
+    }
 
     private static ServiceLifetime AsServiceLifetime(this Lifetime value) => value switch
     {

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\src\Alkaline64.Injectable\Alkaline64.Injectable.csproj" />
+  </ItemGroup>
+
 </Project>
