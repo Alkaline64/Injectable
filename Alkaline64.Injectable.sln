@@ -16,9 +16,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alkaline64.Injectable.Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alkaline64.Injectable.Tests.Accessibility", "test\Alkaline64.Injectable.Testables\Alkaline64.Injectable.Tests.Accessibility.csproj", "{14CE8B35-FE14-48F2-9298-77DFF784A391}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cases", "Cases", "{10B69C4B-28E0-4D5F-AEFC-868388B528AA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{10B69C4B-28E0-4D5F-AEFC-868388B528AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alkaline64.Injectable.Tests.Lifetimes", "Alkaline64.Injectable.Tests.Lifetimes\Alkaline64.Injectable.Tests.Lifetimes.csproj", "{C0507772-B332-4998-B199-A2295683E940}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alkaline64.Injectable.Tests.Lifetime", "test\Alkaline64.Injectable.Tests.Lifetime\Alkaline64.Injectable.Tests.Lifetime.csproj", "{C0507772-B332-4998-B199-A2295683E940}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alkaline64.Injectable.Tests.Context1", "test\Alkaline64.Injectable.Tests.Context1\Alkaline64.Injectable.Tests.Context1.csproj", "{1DDE15DF-609E-4957-A65B-19577386BD57}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alkaline64.Injectable.Tests.Shared", "test\Alkaline64.Injectable.Tests.Shared\Alkaline64.Injectable.Tests.Shared.csproj", "{D13A6825-3D91-4AD7-8900-C9F3AB31A3F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alkaline64.Injectable.Tests.Context2", "test\Alkaline64.Injectable.Tests.Context2\Alkaline64.Injectable.Tests.Context2.csproj", "{5ECA3A95-2B90-41BA-B063-89202B48C139}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alkaline64.Injectable.Tests.Keyed", "test\Alkaline64.Injectable.Tests.Keyed\Alkaline64.Injectable.Tests.Keyed.csproj", "{351DB6BD-CCC6-40A2-A165-BDFF7750A4CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alkaline64.Injectable.Tests.TryAdd", "test\Alkaline64.Injectable.Tests.TryAdd\Alkaline64.Injectable.Tests.TryAdd.csproj", "{049B880F-DC11-46C5-AFB6-56F23E1CCB95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +52,26 @@ Global
 		{C0507772-B332-4998-B199-A2295683E940}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0507772-B332-4998-B199-A2295683E940}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0507772-B332-4998-B199-A2295683E940}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DDE15DF-609E-4957-A65B-19577386BD57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DDE15DF-609E-4957-A65B-19577386BD57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DDE15DF-609E-4957-A65B-19577386BD57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DDE15DF-609E-4957-A65B-19577386BD57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D13A6825-3D91-4AD7-8900-C9F3AB31A3F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D13A6825-3D91-4AD7-8900-C9F3AB31A3F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D13A6825-3D91-4AD7-8900-C9F3AB31A3F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D13A6825-3D91-4AD7-8900-C9F3AB31A3F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ECA3A95-2B90-41BA-B063-89202B48C139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ECA3A95-2B90-41BA-B063-89202B48C139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ECA3A95-2B90-41BA-B063-89202B48C139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ECA3A95-2B90-41BA-B063-89202B48C139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{351DB6BD-CCC6-40A2-A165-BDFF7750A4CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{351DB6BD-CCC6-40A2-A165-BDFF7750A4CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{351DB6BD-CCC6-40A2-A165-BDFF7750A4CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{351DB6BD-CCC6-40A2-A165-BDFF7750A4CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{049B880F-DC11-46C5-AFB6-56F23E1CCB95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{049B880F-DC11-46C5-AFB6-56F23E1CCB95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{049B880F-DC11-46C5-AFB6-56F23E1CCB95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{049B880F-DC11-46C5-AFB6-56F23E1CCB95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +81,11 @@ Global
 		{14CE8B35-FE14-48F2-9298-77DFF784A391} = {10B69C4B-28E0-4D5F-AEFC-868388B528AA}
 		{10B69C4B-28E0-4D5F-AEFC-868388B528AA} = {D885D8FD-202A-40AA-9D48-2BAAF66CD71A}
 		{C0507772-B332-4998-B199-A2295683E940} = {10B69C4B-28E0-4D5F-AEFC-868388B528AA}
+		{1DDE15DF-609E-4957-A65B-19577386BD57} = {10B69C4B-28E0-4D5F-AEFC-868388B528AA}
+		{D13A6825-3D91-4AD7-8900-C9F3AB31A3F3} = {D885D8FD-202A-40AA-9D48-2BAAF66CD71A}
+		{5ECA3A95-2B90-41BA-B063-89202B48C139} = {10B69C4B-28E0-4D5F-AEFC-868388B528AA}
+		{351DB6BD-CCC6-40A2-A165-BDFF7750A4CA} = {10B69C4B-28E0-4D5F-AEFC-868388B528AA}
+		{049B880F-DC11-46C5-AFB6-56F23E1CCB95} = {10B69C4B-28E0-4D5F-AEFC-868388B528AA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50332276-3700-434F-B2B8-2ED5A75F13AE}

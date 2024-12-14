@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -14,7 +14,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
     <PackageReference Include="xunit" Version="2.9.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
       <PrivateAssets>all</PrivateAssets>
@@ -23,8 +24,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Alkaline64.Injectable.Tests.Context1\Alkaline64.Injectable.Tests.Context1.csproj" />
+    <ProjectReference Include="..\Alkaline64.Injectable.Tests.Context2\Alkaline64.Injectable.Tests.Context2.csproj" />
+    <ProjectReference Include="..\Alkaline64.Injectable.Tests.Keyed\Alkaline64.Injectable.Tests.Keyed.csproj" />
+    <ProjectReference Include="..\Alkaline64.Injectable.Tests.Shared\Alkaline64.Injectable.Tests.Shared.csproj" />
+    <ProjectReference Include="..\Alkaline64.Injectable.Tests.TryAdd\Alkaline64.Injectable.Tests.TryAdd.csproj" />
     <ProjectReference Include="..\Alkaline64.Injectable.Testables\Alkaline64.Injectable.Tests.Accessibility.csproj" />
     <ProjectReference Include="..\..\src\Alkaline64.Injectable\Alkaline64.Injectable.csproj" />
+    <ProjectReference Include="..\Alkaline64.Injectable.Tests.Lifetime\Alkaline64.Injectable.Tests.Lifetime.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Alkaline64.Injectable;
+namespace Alkaline64.Injectable.Utils;
 
 internal class AssemblyUtils
 {

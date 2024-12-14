@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Alkaline64.Injectable.Utils;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Alkaline64.Injectable;
+namespace Alkaline64.Injectable.Extensions;
 
 public static class ServiceCollectionExtensions
 {
@@ -41,7 +42,7 @@ public static class ServiceCollectionExtensions
     {
         var descriptor = injectable.GetServiceDescriptor();
 
-        if (injectable.AsTry)
+        if (injectable.TryAdd)
             services.TryAdd(descriptor);
         else
             services.Add(descriptor);
@@ -53,7 +54,7 @@ public static class ServiceCollectionExtensions
             throw new InvalidOperationException($"{nameof(injectable.ImplementationType)} has not been declared.");
 
         var serviceType = injectable.ServiceType ?? injectable.ImplementationType;
-        if (serviceType.IsAssignableFrom(injectable.ImplementationType))
+        if (!serviceType.IsAssignableFrom(injectable.ImplementationType))
             throw new InvalidOperationException($"{serviceType.FullName} is not assignable from {injectable.ImplementationType.FullName}.");
 
         return injectable.Key is not null

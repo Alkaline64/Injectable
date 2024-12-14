@@ -35,7 +35,7 @@ public class InjectableAttribute : Attribute
     /// <summary>
     /// The type of the service which will be injectable.
     /// </summary>
-    public Type? ServiceType { get; init; } = null;
+    public Type? ServiceType { get; protected set; } = null;
 
     /// <summary>
     /// Indicates the key used for registering a keyed service. Null indicates no key will be used.
@@ -43,19 +43,19 @@ public class InjectableAttribute : Attribute
     public string? Key { get; init; } = null;
 
     /// <summary>
-    /// The priority in which to register this service in case there are multiple with the same Service Type.
+    /// The priority in which to register this service in case there are multiple with the same Service Type. The highest value takes priority.
     /// </summary>
     public int Priority { get; init; } = 0;
 
     /// <summary>
     /// Indicates whether to use TryAdd rather than Add to register the service.
     /// </summary>
-    public bool AsTry { get; init; } = false;
+    public bool TryAdd { get; init; } = false;
 
     /// <summary>
     /// The lifetime of the service.
     /// </summary>
-    public Lifetime Lifetime { get; } = Lifetime.Transient;
+    public Lifetime Lifetime { get; } = Lifetime.Scoped;
 
     /// <summary>
     /// Initializes a new instance of the InjectableAttribute.
