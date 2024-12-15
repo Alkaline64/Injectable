@@ -8,8 +8,11 @@
 
   <PropertyGroup>
     <PackageId>Alkaline64.Injectable</PackageId>
-    <RepositoryType>git</RepositoryType>
+    <Authors>wvdhouten</Authors>
+    <Description>Register dependencies using an "Injectable" class-level attribute.</Description>
     <RepositoryUrl>https://github.com/Alkaline64/Injectable</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Dependency Injection</PackageTags>
   </PropertyGroup>
 
     <ItemGroup>
