@@ -14,6 +14,6 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release /p:Version=${VERSION} --output .
     - name: Push
-      run: dotnet nuget push Alkaline64.Injectable.${VERSION}.nupkg --source "github"
+      run: dotnet nuget push Alkaline64.Injectable.${VERSION}.nupkg --source https://api.nuget.org/v3/index.json --api-key $NUGET_KEY
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NUGET_KEY: ${{ secrets.NUGET_KEY }}
