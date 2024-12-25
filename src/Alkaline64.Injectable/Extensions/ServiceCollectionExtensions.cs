@@ -9,7 +9,7 @@ public static class ServiceCollectionExtensions
     /// <summary>
     /// Registers all Injectables in the marker assembly to the service collection.
     /// </summary>
-    /// <typeparam name="TMarker">A marker-type from the assembly to search for an instances of then <see cref="InjectableAttribute">Injectable</see> attribute.</typeparam>
+    /// <typeparam name="TMarker">A marker-type from the assembly to evaluate for instances of the <see cref="InjectableAttribute">Injectable</see> attribute.</typeparam>
     /// <param name="services">The service collection.</param>
     /// <returns>The service collection.</returns>
     public static IServiceCollection RegisterInjectables<TMarker>(this IServiceCollection services)

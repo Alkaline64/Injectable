@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1900826F-515B-4BD4-A951-C9C61933EF3B}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alkaline64.Injectable", "src\Alkaline64.Injectable\Alkaline64.Injectable.csproj", "{8BDD282A-3CD5-40ED-8D16-965D0A3E5712}"
