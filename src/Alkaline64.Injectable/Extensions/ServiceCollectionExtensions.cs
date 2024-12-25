@@ -14,7 +14,9 @@ public static class ServiceCollectionExtensions
     /// <returns>The service collection.</returns>
     public static IServiceCollection RegisterInjectables<TMarker>(this IServiceCollection services)
     {
-        services.RegisterInjectables(AssemblyUtils.FindInjectables<TMarker>());
+        (var injectables, var injectableOptions) = AssemblyUtils.FindInjectables<TMarker>();
+
+        services.RegisterInjectables(injectables, injectableOptions);
 
         return services;
     }
@@ -27,12 +29,12 @@ public static class ServiceCollectionExtensions
     /// <returns>The service collection.</returns>
     public static IServiceCollection RegisterInjectables(this IServiceCollection services, InjectionContext context)
     {
-        services.RegisterInjectables(context.Injectables);
+        services.RegisterInjectables(context.Injectables, context.InjectableOptions);
 
         return services;
     }
 
-    private static void RegisterInjectables(this IServiceCollection services, IEnumerable<InjectableAttribute> injectables)
+    private static void RegisterInjectables(this IServiceCollection services, IEnumerable<InjectableAttribute> injectables, IEnumerable<InjectableOptionsAttribute> injectableOptions)
     {
         foreach (var injectable in injectables.OrderBy(x => x.ServiceType).ThenBy(x => x.Priority))
             services.RegisterInjectable(injectable);
@@ -69,4 +71,9 @@ public static class ServiceCollectionExtensions
         Lifetime.Transient => ServiceLifetime.Transient,
         _ => throw new ArgumentOutOfRangeException(nameof(value))
     };
+
+    private static void RegisterInjectableOption(this IServiceCollection services, InjectableOptionsAttribute injectable)
+    {
+        // .Configure<TOptions> does not have a non-generic version with a type parameter. Something to figure out.
+    }
 }
