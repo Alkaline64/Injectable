@@ -22,6 +22,20 @@ public static class ServiceCollectionExtensions
     /// <summary>
     /// Registers all Injectables in the marker assembly to the service collection.
     /// </summary>
+    /// <typeparam name="TMarker">A marker-type from the assembly to evaluate for instances of the <see cref="InjectableAttribute">Injectable</see> attribute.</typeparam>
+    /// <param name="services">The service collection.</param>
+    /// <param name="masks">The masks for assembly names to include.</param>
+    /// <returns>The service collection.</returns>
+    public static IServiceCollection RegisterInjectables(this IServiceCollection services, params string[] masks)
+    {
+        services.RegisterInjectables(AssemblyUtils.FindInjectables(masks));
+
+        return services;
+    }
+
+    /// <summary>
+    /// Registers all Injectables in the marker assembly to the service collection.
+    /// </summary>
     /// <param name="services">The service collection.</param>
     /// <param name="context">The injection context.</param>
     /// <returns>The service collection.</returns>

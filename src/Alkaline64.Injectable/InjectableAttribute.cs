@@ -66,6 +66,10 @@ public class InjectableAttribute : Attribute
         Lifetime = lifetime;
     }
 
+    private InjectableAttribute()
+    {
+    }
+
     internal InjectableAttribute ForType(Type type)
     {
         ImplementationType = type;
@@ -87,5 +91,9 @@ public class InjectableAttribute<TServiceType> : InjectableAttribute
     public InjectableAttribute(Lifetime lifetime = Lifetime.Scoped) : base(lifetime)
     {
         ServiceType = typeof(TServiceType);
+    }
+
+    private InjectableAttribute()
+    {
     }
 }
