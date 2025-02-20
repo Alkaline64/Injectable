@@ -59,7 +59,7 @@ Registering a service with a specific `Type` (the most common use-case):
 ```csharp
 using Alkaline64.Injectable;
 
-[Injectable<IScopedService>(Lifetime.Scoped, Key = "Primary")]
+[Injectable<IScopedService>(Lifetime.Scoped)]
 public class ScopedService : IScopedService { }
 ```
 
