@@ -10,8 +10,11 @@ namespace Alkaline64.Injectable.Tests;
 
 public class PrioritizedServicesTests
 {
-    [Fact]
-    public void MultipleInjectablesInSingleAssembly_ReturnsHighestPriority()
+    private const string Category = "Priority";
+
+    [Category(Category)]
+    [Test]
+    public async Task MultipleInjectablesInSingleAssembly_ReturnsHighestPriority()
     {
         // Arrange
         var services = new ServiceCollection();
@@ -22,11 +25,12 @@ public class PrioritizedServicesTests
         var service = serviceProvider.GetRequiredService<IPrioritizedProvider>();
 
         // Assert
-        Assert.IsType<PrioritizedService1>(service);
+        await Assert.That(service).IsTypeOf<PrioritizedService1>();
     }
 
-    [Fact]
-    public void MultipleInjectablesInSingleAssembly_AreInOrder()
+    [Category(Category)]
+    [Test]
+    public async Task MultipleInjectablesInSingleAssembly_AreInOrder()
     {
         // Arrange
         var services = new ServiceCollection();
@@ -37,13 +41,14 @@ public class PrioritizedServicesTests
         var resolvedServices = serviceProvider.GetServices<IPrioritizedProvider>().ToList();
 
         // Assert
-        Assert.Equal(2, resolvedServices.Count);
-        Assert.IsType<PrioritizedService2>(resolvedServices[0]);
-        Assert.IsType<PrioritizedService1>(resolvedServices[1]);
+        await Assert.That(resolvedServices.Count).IsEqualTo(2);
+        await Assert.That(resolvedServices[0]).IsTypeOf<PrioritizedService2>();
+        await Assert.That(resolvedServices[1]).IsTypeOf<PrioritizedService1>();
     }
 
-    [Fact]
-    public void MultipleInjectablesInMultipleAssemblies_ReturnsHighestPriority()
+    [Category(Category)]
+    [Test]
+    public async Task MultipleInjectablesInMultipleAssemblies_ReturnsHighestPriority()
     {
         // Arrange
         var services = new ServiceCollection();
@@ -57,11 +62,12 @@ public class PrioritizedServicesTests
         var service = serviceProvider.GetRequiredService<IPrioritizedProvider>();
 
         // Assert
-        Assert.IsType<PrioritizedService3>(service);
+        await Assert.That(service).IsTypeOf<PrioritizedService3>();
     }
 
-    [Fact]
-    public void MultipleInjectablesInMultipleAssemblies_AreInOrder()
+    [Category(Category)]
+    [Test]
+    public async Task MultipleInjectablesInMultipleAssemblies_AreInOrder()
     {
         // Arrange
         var services = new ServiceCollection();
@@ -75,10 +81,10 @@ public class PrioritizedServicesTests
         var resolvedServices = serviceProvider.GetServices<IPrioritizedProvider>().ToList();
 
         // Assert
-        Assert.Equal(4, resolvedServices.Count);
-        Assert.IsType<PrioritizedService2>(resolvedServices[0]);
-        Assert.IsType<PrioritizedService4>(resolvedServices[1]);
-        Assert.IsType<PrioritizedService1>(resolvedServices[2]);
-        Assert.IsType<PrioritizedService3>(resolvedServices[3]);
+        await Assert.That(resolvedServices.Count).IsEqualTo(4);
+        await Assert.That(resolvedServices[0]).IsTypeOf<PrioritizedService2>();
+        await Assert.That(resolvedServices[1]).IsTypeOf<PrioritizedService4>();
+        await Assert.That(resolvedServices[2]).IsTypeOf<PrioritizedService1>();
+        await Assert.That(resolvedServices[3]).IsTypeOf<PrioritizedService3>();
     }
 }

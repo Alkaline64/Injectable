@@ -28,6 +28,9 @@ internal class AssemblyUtils
             foreach (var injectable in type.GetCustomAttributes<InjectableAttribute>(true))
                 injectables.Add(injectable.ForType(type));
 
+        // TODO: Benchmark performance.
+        // var injectables1 = typeof(TMarker).Assembly.GetTypes().SelectMany(type => type.GetCustomAttributes<InjectableAttribute>(true).Select(injectable => injectable.ForType(type)));
+
         return injectables;
     }
 

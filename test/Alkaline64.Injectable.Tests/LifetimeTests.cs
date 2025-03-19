@@ -7,8 +7,11 @@ namespace Alkaline64.Injectable.Tests;
 
 public class LifetimeTests
 {
-    [Fact]
-    public void SingletonInjectable_RetainsInstanceWithinScope()
+    private const string Category = "Lifetime";
+
+    [Category(Category)]
+    [Test]
+    public async Task SingletonInjectable_RetainsInstanceWithinScope()
     {
         // Arrange
         var services = new ServiceCollection();
@@ -20,12 +23,13 @@ public class LifetimeTests
         var additionalService = serviceProvider.GetRequiredService<SingletonService>();
 
         // Assert
-        Assert.Equal(baselineService, additionalService);
-        Assert.Equal(baselineService.Guid, additionalService.Guid);
+        await Assert.That(additionalService).IsEqualTo(baselineService);
+        await Assert.That(additionalService.Guid).IsEqualTo(baselineService.Guid);
     }
 
-    [Fact]
-    public void SingletonInjectable_RetainsInstanceBetweenScopes()
+    [Category(Category)]
+    [Test]
+    public async Task SingletonInjectable_RetainsInstanceBetweenScopes()
     {
         // Arrange
         var services = new ServiceCollection();
@@ -40,12 +44,13 @@ public class LifetimeTests
         var additionalService = additionalScope.ServiceProvider.GetRequiredService<SingletonService>();
 
         // Assert
-        Assert.Equal(baselineService, additionalService);
-        Assert.Equal(baselineService.Guid, additionalService.Guid);
+        await Assert.That(additionalService).IsEqualTo(baselineService);
+        await Assert.That(additionalService.Guid).IsEqualTo(baselineService.Guid);
     }
 
-    [Fact]
-    public void ScopedInjectable_RetainsInstanceWithinScope()
+    [Category(Category)]
+    [Test]
+    public async Task ScopedInjectable_RetainsInstanceWithinScope()
     {
         // Arrange
         var services = new ServiceCollection();
@@ -57,12 +62,13 @@ public class LifetimeTests
         var additionalService = serviceProvider.GetRequiredService<ScopedService>();
 
         // Assert
-        Assert.Equal(baselineService, additionalService);
-        Assert.Equal(baselineService.Guid, additionalService.Guid);
+        await Assert.That(additionalService).IsEqualTo(baselineService);
+        await Assert.That(additionalService.Guid).IsEqualTo(baselineService.Guid);
     }
 
-    [Fact]
-    public void ScopedInjectable_ChangesInstanceBetweenScopes()
+    [Category(Category)]
+    [Test]
+    public async Task ScopedInjectable_ChangesInstanceBetweenScopes()
     {
         // Arrange
         var services = new ServiceCollection();
@@ -77,12 +83,13 @@ public class LifetimeTests
         var additionalService = additionalScope.ServiceProvider.GetRequiredService<ScopedService>();
 
         // Assert
-        Assert.NotEqual(baselineService, additionalService);
-        Assert.NotEqual(baselineService.Guid, additionalService.Guid);
+        await Assert.That(additionalService).IsNotEqualTo(baselineService);
+        await Assert.That(additionalService.Guid).IsNotEqualTo(baselineService.Guid);
     }
 
-    [Fact]
-    public void TransientInjectable_ChangesInstanceWithinScope()
+    [Category(Category)]
+    [Test]
+    public async Task TransientInjectable_ChangesInstanceWithinScope()
     {
         // Arrange
         var services = new ServiceCollection();
@@ -94,12 +101,13 @@ public class LifetimeTests
         var additionalService = serviceProvider.GetRequiredService<TransientService>();
 
         // Assert
-        Assert.NotEqual(baselineService, additionalService);
-        Assert.NotEqual(baselineService.Guid, additionalService.Guid);
+        await Assert.That(additionalService).IsNotEqualTo(baselineService);
+        await Assert.That(additionalService.Guid).IsNotEqualTo(baselineService.Guid);
     }
 
-    [Fact]
-    public void Transientjectable_ChangesInstanceBetweenScopes()
+    [Category(Category)]
+    [Test]
+    public async Task Transientjectable_ChangesInstanceBetweenScopes()
     {
         // Arrange
         var services = new ServiceCollection();
@@ -114,7 +122,7 @@ public class LifetimeTests
         var additionalService = additionalScope.ServiceProvider.GetRequiredService<TransientService>();
 
         // Assert
-        Assert.NotEqual(baselineService, additionalService);
-        Assert.NotEqual(baselineService.Guid, additionalService.Guid);
+        await Assert.That(additionalService).IsNotEqualTo(baselineService);
+        await Assert.That(additionalService.Guid).IsNotEqualTo(baselineService.Guid);
     }
 }

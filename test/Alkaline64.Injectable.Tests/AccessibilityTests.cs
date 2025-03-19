@@ -7,8 +7,11 @@ namespace Alkaline64.Injectable.Tests;
 
 public class AccessibilityTests
 {
-    [Fact]
-    public void InternalImplementation_IsInjectable()
+    private const string Category = "Accessibility";
+
+    [Category(Category)]
+    [Test]
+    public async Task InternalImplementation_IsInjectable()
     {
         // Arrange
         var services = new ServiceCollection();
@@ -19,7 +22,7 @@ public class AccessibilityTests
         var service = serviceProvider.GetRequiredService<IService>();
 
         // Assert
-        Assert.NotNull(service);
-        Assert.Equal("Alkaline64.Injectable.Tests.Accessibility.Services.InternalImplementation", service.GetType().FullName);
+        await Assert.That(service).IsNotNull();
+        await Assert.That(service.GetType().FullName).IsEqualTo("Alkaline64.Injectable.Tests.Accessibility.Services.InternalImplementation");
     }
 }
