@@ -48,8 +48,11 @@ public static class ServiceCollectionExtensions
 
     private static void RegisterInjectables(this IServiceCollection services, IEnumerable<InjectableAttribute> injectables)
     {
-        foreach (var injectable in injectables.OrderBy(x => x.ServiceType).ThenBy(x => x.Priority))
-            services.RegisterInjectable(injectable);
+        var groups = injectables.GroupBy(x => x.ServiceType ?? x.ImplementationType);
+
+        foreach (var group in groups)
+            foreach (var injectable in group.OrderBy(x => x.Priority))
+                services.RegisterInjectable(injectable);
     }
 
     private static void RegisterInjectable(this IServiceCollection services, InjectableAttribute injectable)
